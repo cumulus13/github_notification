@@ -387,6 +387,7 @@ def send_notification(publishers, notification, sticky=False):
             # Primary: structured callback object (on_click/on_close/on_timeout)
             pub.publish(title, message, gntp_callback=Callback(notification), sticky=sticky)
         except Exception as e1:
+            console.print(f"[bold red]Primary callback failed with error:[/] {e1}") 
             if str(e1).lower() == "timed out":
                 continue
             try:
